@@ -4,6 +4,7 @@
     'summary': 'Core module for Charge ERP',
     'description': """
         This is the core module for the Charge ERP system.
+        (Forcing a reload to fix a registry issue)
     """,
     'author': 'Charge',
     'website': 'https://www.charge-erp.com',
