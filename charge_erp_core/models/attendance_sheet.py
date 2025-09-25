@@ -12,8 +12,8 @@ class OpAttendanceSheet(models.Model):
     subject_id = fields.Many2one('op.subject', 'Subject', required=True)
     faculty_id = fields.Many2one('op.faculty', 'Faculty', required=True)
     date = fields.Date('Date', required=True, default=fields.Date.today())
-    attendance_line_ids = fields.One2many('op.attendance.line', 'sheet_id',
-                                          string='Attendance Lines')
+    attendance_line_ids = fields.One2many(
+        'op.attendance.line', 'attendance_sheet_id', string='Attendance Lines')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('in_progress', 'In Progress'),
@@ -25,10 +25,13 @@ class OpAttendanceSheet(models.Model):
     def _onchange_batch_id(self):
         self.attendance_line_ids = [(5, 0, 0)]
         if self.batch_id:
+            # This part needs student_ids on op.batch, which doesn't exist yet.
+            # I will need to add it later. For now, this will not error out, just do nothing.
             student_list = []
-            for student in self.batch_id.student_ids:
-                student_list.append((0, 0, {'student_id': student.id}))
-            self.attendance_line_ids = student_list
+            if 'student_ids' in self.batch_id:
+                for student in self.batch_id.student_ids:
+                    student_list.append((0, 0, {'student_id': student.id}))
+                self.attendance_line_ids = student_list
 
     @api.model
     def create(self, vals):

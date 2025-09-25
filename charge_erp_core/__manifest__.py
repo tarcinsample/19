@@ -4,7 +4,6 @@
     'summary': 'Core module for Charge ERP',
     'description': """
         This is the core module for the Charge ERP system.
-        (Forcing a reload to fix a registry issue)
     """,
     'author': 'Charge',
     'website': 'https://www.charge-erp.com',
@@ -25,10 +24,6 @@
         'views/student_user_action.xml',
         'views/attendance_views.xml',
         'data/ir_sequence_data.xml',
-        'views/student_report_wizard_views.xml',
-        'report/student_report_templates.xml',
-        'report/report_actions.xml',
-        'views/dashboard_views.xml',
     ],
     'installable': True,
     'application': True,

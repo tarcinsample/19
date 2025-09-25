@@ -20,7 +20,6 @@ class OpFaculty(models.Model):
         ('male', 'Male'), ('female', 'Female')
     ], 'Gender', required=True)
     nationality = fields.Many2one('res.country', 'Nationality')
-    subject_ids = fields.Many2many('op.subject', string='Subjects')
     active = fields.Boolean(default=True)
 
     @api.depends('first_name', 'middle_name', 'last_name')

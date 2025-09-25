@@ -39,7 +39,5 @@ class OpStudent(models.Model):
     category = fields.Char(string='Category')
     user_id = fields.Many2one('res.users', string='User')
     batch_id = fields.Many2one('op.batch', string='Batch')
-    faculty_ids = fields.Many2many('op.faculty', string='Faculties')
-    program_id = fields.Many2one('op.program', string='Program')
     miscellaneous = fields.Text(string='Miscellaneous')
 
