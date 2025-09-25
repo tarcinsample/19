@@ -7,19 +7,13 @@ class OpAttendanceSheet(models.Model):
     _name = "op.attendance.sheet"
     _description = "Attendance Sheet"
 
-    name = fields.Char('Name', required=True, readonly=True,
-                       states={'draft': [('readonly', False)]}, default='New')
-    batch_id = fields.Many2one('op.batch', 'Batch', required=True, readonly=True,
-                               states={'draft': [('readonly', False)]})
-    subject_id = fields.Many2one('op.subject', 'Subject', required=True, readonly=True,
-                                 states={'draft': [('readonly', False)]})
-    faculty_id = fields.Many2one('op.faculty', 'Faculty', required=True, readonly=True,
-                                 states={'draft': [('readonly', False)]})
-    date = fields.Date('Date', required=True, readonly=True,
-                       states={'draft': [('readonly', False)]}, default=fields.Date.today())
+    name = fields.Char('Name', required=True, default='New')
+    batch_id = fields.Many2one('op.batch', 'Batch', required=True)
+    subject_id = fields.Many2one('op.subject', 'Subject', required=True)
+    faculty_id = fields.Many2one('op.faculty', 'Faculty', required=True)
+    date = fields.Date('Date', required=True, default=fields.Date.today())
     attendance_line_ids = fields.One2many('op.attendance.line', 'sheet_id',
-                                          string='Attendance Lines', readonly=True,
-                                          states={'draft': [('readonly', False)], 'in_progress': [('readonly', False)]})
+                                          string='Attendance Lines')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('in_progress', 'In Progress'),

@@ -27,16 +27,16 @@
                     <header>
                         <button name="action_start_attendance" string="Start Attendance"
                                 type="object" class="btn-primary"
-                                states="draft"/>
+                                modifiers="{'invisible': [['state', '!=', 'draft']]}"/>
                         <button name="action_mark_as_done" string="Mark as Done"
                                 type="object" class="btn-primary"
-                                states="in_progress"/>
+                                modifiers="{'invisible': [['state', '!=', 'in_progress']]}"/>
                         <button name="action_cancel" string="Cancel"
                                 type="object"
-                                states="draft,in_progress"/>
+                                modifiers="{'invisible': [['state', 'not in', ['draft', 'in_progress']]]}"/>
                         <button name="action_reset_to_draft" string="Reset to Draft"
                                 type="object"
-                                states="cancelled,done"/>
+                                modifiers="{'invisible': [['state', 'not in', ['cancelled', 'done']]]}"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
                     </header>
                     <sheet>
@@ -47,23 +47,23 @@
                         </div>
                         <group>
                             <group>
-                                <field name="batch_id"/>
-                                <field name="subject_id"/>
+                                <field name="batch_id" modifiers="{'readonly': [['state', '!=', 'draft']]}"/>
+                                <field name="subject_id" modifiers="{'readonly': [['state', '!=', 'draft']]}"/>
                             </group>
                             <group>
-                                <field name="faculty_id"/>
-                                <field name="date"/>
+                                <field name="faculty_id" modifiers="{'readonly': [['state', '!=', 'draft']]}"/>
+                                <field name="date" modifiers="{'readonly': [['state', '!=', 'draft']]}"/>
                             </group>
                         </group>
                         <notebook>
-                            <!-- <page string="Attendance Lines">
-                                <field name="attendance_line_ids">
+                            <page string="Attendance Lines">
+                                <field name="attendance_line_ids" modifiers="{'readonly': [['state', 'not in', ['draft', 'in_progress']]]}">
                                     <tree editable="bottom">
                                         <field name="student_id"/>
                                         <field name="present"/>
                                     </tree>
                                 </field>
-                            </page> -->
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
