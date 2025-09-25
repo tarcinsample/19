@@ -56,14 +56,14 @@
                             </group>
                         </group>
                         <notebook>
-                            <page string="Attendance Lines">
+                            <!-- <page string="Attendance Lines">
                                 <field name="attendance_line_ids">
                                     <tree editable="bottom">
                                         <field name="student_id"/>
                                         <field name="present"/>
                                     </tree>
                                 </field>
-                            </page>
+                            </page> -->
                         </notebook>
                     </sheet>
                 </form>
