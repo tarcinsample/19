@@ -33,6 +33,11 @@
                                 <field name="active"/>
                             </group>
                         </group>
+                        <notebook>
+                            <page string="Subjects">
+                                <field name="subject_ids"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

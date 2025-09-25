@@ -15,6 +15,7 @@ class OpCourse(models.Model):
          ('CWA', 'CWA'), ('CCE', 'CCE')],
         'Evaluation Type', default="normal", required=True)
     active = fields.Boolean(default=True)
+    subject_ids = fields.Many2many('op.subject', string='Subjects')
 
     @api.constrains('parent_id')
     def _check_category_recursion(self):
