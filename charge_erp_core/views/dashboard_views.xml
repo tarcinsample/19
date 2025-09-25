@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_sis_dashboard" model="ir.ui.view">
+            <field name="name">sis.dashboard</field>
+            <field name="model">op.student</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <dashboard>
+                    <view type="graph" ref="charge_erp_core.view_op_student_graph"/>
+                    <group>
+                        <group>
+                            <aggregate name="total_students" string="Total Students" model="op.student" field="id" measure="__count__"/>
+                            <aggregate name="total_courses" string="Total Courses" model="op.course" field="id" measure="__count__"/>
+                        </group>
+                        <group>
+                            <aggregate name="total_faculties" string="Total Faculties" model="op.faculty" field="id" measure="__count__"/>
+                            <aggregate name="total_batches" string="Total Batches" model="op.batch" field="id" measure="__count__"/>
+                        </group>
+                    </group>
+                    <view type="list" ref="charge_erp_core.view_op_student_tree_dashboard"/>
+                </dashboard>
+            </field>
+        </record>
+
+        <record id="view_op_student_tree_dashboard" model="ir.ui.view">
+            <field name="name">op.student.tree.dashboard</field>
+            <field name="model">op.student</field>
+            <field name="arch" type="xml">
+                <tree string="Students">
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="mobile"/>
+                    <field name="registration_number"/>
+                    <field name="batch_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_op_student_graph" model="ir.ui.view">
+            <field name="name">op.student.graph</field>
+            <field name="model">op.student</field>
+            <field name="arch" type="xml">
+                <graph string="Students by Batch">
+                    <field name="batch_id"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="action_sis_dashboard" model="ir.actions.act_window">
+            <field name="name">Dashboard</field>
+            <field name="res_model">op.student</field>
+            <field name="view_mode">dashboard,graph,list,form</field>
+        </record>
+
+        <!-- Update Root Menu to use Dashboard -->
+        <record id="charge_erp_core.menu_op_school_root" model="ir.ui.menu">
+            <field name="action" ref="action_sis_dashboard"/>
+        </record>
+
+    </data>
+</odoo>

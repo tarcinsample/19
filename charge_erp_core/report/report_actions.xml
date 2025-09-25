@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_student_list" model="ir.actions.report">
+            <field name="name">Students by Course</field>
+            <field name="model">student.report.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">charge_erp_core.report_student_list_template</field>
+            <field name="report_file">charge_erp_core.report_student_list_template</field>
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

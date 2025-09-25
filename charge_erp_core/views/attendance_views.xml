@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- List View for Attendance Sheet -->
+        <record id="view_op_attendance_sheet_list" model="ir.ui.view">
+            <field name="name">op.attendance.sheet.list</field>
+            <field name="model">op.attendance.sheet</field>
+            <field name="arch" type="xml">
+                <list string="Attendance Sheets">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="batch_id"/>
+                    <field name="subject_id"/>
+                    <field name="faculty_id"/>
+                    <field name="state"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View for Attendance Sheet -->
+        <record id="view_op_attendance_sheet_form" model="ir.ui.view">
+            <field name="name">op.attendance.sheet.form</field>
+            <field name="model">op.attendance.sheet</field>
+            <field name="arch" type="xml">
+                <form string="Attendance Sheet">
+                    <header>
+                        <button name="action_start_attendance" string="Start Attendance"
+                                type="object" class="btn-primary"
+                                states="draft"/>
+                        <button name="action_mark_as_done" string="Mark as Done"
+                                type="object" class="btn-primary"
+                                states="in_progress"/>
+                        <button name="action_cancel" string="Cancel"
+                                type="object"
+                                states="draft,in_progress"/>
+                        <button name="action_reset_to_draft" string="Reset to Draft"
+                                type="object"
+                                states="cancelled,done"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="batch_id"/>
+                                <field name="subject_id"/>
+                            </group>
+                            <group>
+                                <field name="faculty_id"/>
+                                <field name="date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Attendance Lines">
+                                <field name="attendance_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="student_id"/>
+                                        <field name="present"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for Attendance Sheet -->
+        <record id="action_op_attendance_sheet" model="ir.actions.act_window">
+            <field name="name">Attendance Sheets</field>
+            <field name="res_model">op.attendance.sheet</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Menu for Attendance -->
+        <menuitem id="menu_op_attendance" name="Attendance"
+                  parent="menu_op_school_root"
+                  action="action_op_attendance_sheet"
+                  sequence="60"/>
+
+    </data>
+</odoo>
