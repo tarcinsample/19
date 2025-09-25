@@ -13,6 +13,7 @@
                     <field name="phone"/>
                     <field name="mobile"/>
                     <field name="registration_number"/>
+                    <field name="batch_id"/>
                 </list>
             </field>
         </record>
@@ -75,6 +76,8 @@
                                     <field name="badge_id"/>
                                     <field name="category"/>
                                     <field name="user_id"/>
+                                    <field name="batch_id"/>
+                                    <field name="faculty_ids" widget="many2many_tags"/>
                                     <field name="miscellaneous"/>
                                 </group>
                             </page>
