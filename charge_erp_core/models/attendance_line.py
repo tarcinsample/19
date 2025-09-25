@@ -7,5 +7,5 @@ class OpAttendanceLine(models.Model):
     _description = "Attendance Line"
 
     student_id = fields.Many2one('op.student', 'Student', required=True)
-    attendance_sheet_id = fields.Many2one('op.attendance.sheet', 'Attendance Sheet', required=True, ondelete='cascade')
+    sheet_id = fields.Many2one('op.attendance.sheet', 'Attendance Sheet', required=True, ondelete='cascade')
     present = fields.Boolean('Present', default=False)

@@ -17,7 +17,7 @@ class OpAttendanceSheet(models.Model):
                                  states={'draft': [('readonly', False)]})
     date = fields.Date('Date', required=True, readonly=True,
                        states={'draft': [('readonly', False)]}, default=fields.Date.today())
-    attendance_line_ids = fields.One2many('op.attendance.line', 'attendance_sheet_id',
+    attendance_line_ids = fields.One2many('op.attendance.line', 'sheet_id',
                                           string='Attendance Lines', readonly=True,
                                           states={'draft': [('readonly', False)], 'in_progress': [('readonly', False)]})
     state = fields.Selection([
