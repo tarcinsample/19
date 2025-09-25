@@ -10,3 +10,4 @@ from . import program
 from . import department
 from . import academic_term
 from . import academic_year
+from . import student_user
