@@ -22,8 +22,6 @@
         'views/academic_term_views.xml',
         'views/academic_year_views.xml',
         'views/student_user_action.xml',
-        'views/attendance_views.xml',
-        'data/ir_sequence_data.xml',
     ],
     'installable': True,
     'application': True,

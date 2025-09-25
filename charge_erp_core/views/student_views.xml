@@ -75,6 +75,8 @@
                                     <field name="badge_id"/>
                                     <field name="category"/>
                                     <field name="user_id"/>
+                                    <field name="batch_id"/>
+                                    <field name="program_id"/>
                                     <field name="miscellaneous"/>
                                 </group>
                             </page>
