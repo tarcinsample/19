@@ -12,7 +12,8 @@
                         <button name="%(charge_erp_core.action_op_attendee_wizard)d"
                                 type="action"
                                 string="Add Attendees"
-                                class="oe_highlight"/>
+                                class="oe_highlight"
+                                context="{'default_session_id': id}"/>
                     </header>
                     <sheet>
                         <group>
