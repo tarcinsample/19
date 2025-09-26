@@ -63,7 +63,7 @@
                                     <field name="phone"/>
                                     <field name="mobile"/>
                                     <field name="email"/>
-                                    <field name="emergency_contact"/>
+                                    <field name="emergency_contact_id"/>
                                 </group>
                                 <label for="street"/>
                                 <div class="o_address_format">
