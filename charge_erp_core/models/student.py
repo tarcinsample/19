@@ -31,7 +31,8 @@ class OpStudent(models.Model):
 
     # Contact Information
     mobile = fields.Char("Mobile")
-    emergency_contact = fields.Many2one('res.partner', string='Emergency Contact')
+    emergency_contact = fields.Many2one(
+        'res.partner', string='Emergency Contact', ondelete='set null')
     parent_ids = fields.Many2many(
         'res.partner', 'op_student_parent_rel', 'student_id', 'parent_id', string='Parents')
 
