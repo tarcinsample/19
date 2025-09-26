@@ -15,6 +15,14 @@ class OpCourse(models.Model):
          ('CWA', 'CWA'), ('CCE', 'CCE')],
         'Evaluation Type', default="normal", required=True)
     active = fields.Boolean(default=True)
+    session_ids = fields.One2many(
+        'op.session', 'course_id', string="Sessions")
+    session_count = fields.Integer(
+        string='Session Count', compute='_compute_session_count')
+
+    def _compute_session_count(self):
+        for course in self:
+            course.session_count = len(course.session_ids)
 
     @api.constrains('parent_id')
     def _check_category_recursion(self):

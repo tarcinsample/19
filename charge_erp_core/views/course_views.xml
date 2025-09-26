@@ -22,6 +22,14 @@
             <field name="arch" type="xml">
                 <form string="Course">
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="%(charge_erp_core.session_list_action)d"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-calendar">
+                                <field name="session_count" widget="statinfo" string="Sessions"/>
+                            </button>
+                        </div>
                         <group>
                             <group>
                                 <field name="name"/>
