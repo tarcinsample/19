@@ -8,7 +8,8 @@ class Session(models.Model):
     start_date = fields.Date()
     duration = fields.Float(digits=(6, 2), help="Duration in days")
     seats = fields.Integer(string="Number of seats")
-    instructor_id = fields.Many2one('op.faculty', string="Instructor")
+    faculty_ids = fields.Many2many(
+        'op.faculty', 'op_session_faculty_rel', 'session_id', 'faculty_id', string="Faculties")
     course_id = fields.Many2one('op.course', ondelete='cascade', string="Course", required=True)
     attendee_ids = fields.Many2many(
         'op.student', 'op_session_student_rel', 'session_id', 'student_id', string="Attendees")
