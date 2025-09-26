@@ -13,6 +13,7 @@
                             <field name="name"/>
                             <field name="instructor_id"/>
                             <field name="course_id"/>
+                            <field name="academic_year_id"/>
                             <field name="start_date"/>
                             <field name="duration"/>
                             <field name="seats"/>
@@ -35,6 +36,7 @@
                 <list string="Session List">
                     <field name="name"/>
                     <field name="course_id"/>
+                    <field name="academic_year_id"/>
                 </list>
             </field>
         </record>

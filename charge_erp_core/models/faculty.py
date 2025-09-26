@@ -21,6 +21,12 @@ class OpFaculty(models.Model):
     ], 'Gender', required=True)
     nationality = fields.Many2one('res.country', 'Nationality')
     active = fields.Boolean(default=True)
+    session_ids = fields.One2many('op.session', 'instructor_id', string="Sessions")
+    session_count = fields.Integer(string='Session Count', compute='_compute_session_count')
+
+    def _compute_session_count(self):
+        for faculty in self:
+            faculty.session_count = len(faculty.session_ids)
 
     @api.depends('first_name', 'middle_name', 'last_name')
     def _compute_name(self):

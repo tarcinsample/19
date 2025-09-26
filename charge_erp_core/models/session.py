@@ -10,4 +10,6 @@ class Session(models.Model):
     seats = fields.Integer(string="Number of seats")
     instructor_id = fields.Many2one('op.faculty', string="Instructor")
     course_id = fields.Many2one('op.course', ondelete='cascade', string="Course", required=True)
-    attendee_ids = fields.Many2many('op.student', string="Attendees")
+    attendee_ids = fields.Many2many(
+        'op.student', 'op_session_student_rel', 'session_id', 'student_id', string="Attendees")
+    academic_year_id = fields.Many2one('op.academic.year', string='Academic Year')

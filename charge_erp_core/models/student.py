@@ -41,4 +41,11 @@ class OpStudent(models.Model):
     batch_id = fields.Many2one('op.batch', string='Batch')
     program_id = fields.Many2one('op.program', string='Program')
     miscellaneous = fields.Text(string='Miscellaneous')
+    session_ids = fields.Many2many(
+        'op.session', 'op_session_student_rel', 'student_id', 'session_id', string="Sessions")
+    session_count = fields.Integer(string='Session Count', compute='_compute_session_count')
+
+    def _compute_session_count(self):
+        for student in self:
+            student.session_count = len(student.session_ids)
 
