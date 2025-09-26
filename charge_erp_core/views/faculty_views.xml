@@ -26,7 +26,7 @@
                                 type="action"
                                 class="oe_stat_button"
                                 icon="fa-calendar"
-                                context="{'search_default_instructor_id': active_id, 'default_instructor_id': active_id}">
+                                context="{'search_default_instructor_id': id, 'default_instructor_id': id}">
                                 <field name="session_count" widget="statinfo" string="Sessions"/>
                             </button>
                         </div>
