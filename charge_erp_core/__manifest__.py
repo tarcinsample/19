@@ -11,6 +11,7 @@
     'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',
+        'views/menu_views.xml',
         'wizard/attendee_wizard_views.xml',
         'views/session_views.xml',
         'views/student_views.xml',

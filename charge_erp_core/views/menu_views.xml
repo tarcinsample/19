@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Root Menu -->
+        <menuitem id="menu_op_school_root" name="SIS" sequence="10"/>
+    </data>
+</odoo>
