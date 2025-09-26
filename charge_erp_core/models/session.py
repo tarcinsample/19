@@ -1,4 +1,5 @@
-from odoo import models, fields
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 class Session(models.Model):
     _name = 'op.session'
@@ -14,3 +15,13 @@ class Session(models.Model):
     attendee_ids = fields.Many2many(
         'op.student', 'op_session_student_rel', 'session_id', 'student_id', string="Attendees")
     academic_year_id = fields.Many2one('op.academic.year', string='Academic Year')
+
+    @api.constrains('seats', 'attendee_ids')
+    def _check_seats(self):
+        for r in self:
+            if r.seats < 0:
+                raise ValidationError(_(
+                    "The number of available seats cannot be negative."))
+            if len(r.attendee_ids) > r.seats:
+                raise ValidationError(_(
+                    "There are more attendees than available seats."))
