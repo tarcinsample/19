@@ -28,14 +28,14 @@
         </record>
 
         <!-- List View -->
-        <record model="ir.ui.view" id="session_tree_view">
-            <field name="name">session.tree</field>
+        <record model="ir.ui.view" id="session_list_view">
+            <field name="name">session.list</field>
             <field name="model">op.session</field>
             <field name="arch" type="xml">
-                <tree string="Session Tree">
+                <list string="Session List">
                     <field name="name"/>
                     <field name="course_id"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -54,7 +54,7 @@
         <record model="ir.actions.act_window" id="session_list_action">
             <field name="name">Sessions</field>
             <field name="res_model">op.session</field>
-            <field name="view_mode">tree,form,calendar</field>
+            <field name="view_mode">list,form,calendar</field>
         </record>
 
         <!-- Menu Item -->
