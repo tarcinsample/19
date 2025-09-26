@@ -27,10 +27,13 @@ class OpStudent(models.Model):
     nationality = fields.Many2one('res.country', string='Nationality')
     visa_info = fields.Char(string='Visa Info')
     is_an_alumni = fields.Boolean(string='Is an Alumni?')
+    id_number = fields.Char(string='ID Card Number')
 
     # Contact Information
     mobile = fields.Char("Mobile")
-    emergency_contact = fields.Char(string='Emergency Contact')
+    emergency_contact = fields.Many2one('res.partner', string='Emergency Contact')
+    parent_ids = fields.Many2many(
+        'res.partner', 'op_student_parent_rel', 'student_id', 'parent_id', string='Parents')
 
     # Other Information
     registration_number = fields.Char(string='Registration Number')

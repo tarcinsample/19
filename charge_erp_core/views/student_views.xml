@@ -76,10 +76,16 @@
                                 </div>
                             </page>
 
+                            <!-- Family Information -->
+                            <page string="Family Information">
+                                <field name="parent_ids" widget="many2many_tags"/>
+                            </page>
+
                             <!-- Other Information -->
                             <page string="Other Information">
                                 <group>
                                     <field name="registration_number"/>
+                                    <field name="id_number"/>
                                     <field name="library_card"/>
                                     <field name="badge_id"/>
                                     <field name="category"/>
